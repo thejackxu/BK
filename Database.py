@@ -17,13 +17,12 @@ class DBManager:
             #cash inflow table, property ID, date, $ amount, payment category (rent, late fee, etc)
             cashInflowTable = '''
                         CREATE TABLE IF NOT EXISTS cashInflowTable(
-                        primary_id TEXT UNIQUE NOT NULL,
+                        primary_id TEXT NOT NULL,
                         paymentDate TEXT NOT NULL,
                         dollarAmount MONEY NOT NULL,
                         paymentCategory TEXT NOT NULL,
                         FOREIGN KEY (primary_id)
                             REFERENCES pidTable (primary_id)
-                            ON DELETE SET NULL
                             ON UPDATE CASCADE
                         )
                         '''
@@ -31,7 +30,7 @@ class DBManager:
             #others, and payment type (how did they pay)
             cashOutflowTable = '''
                         CREATE TABLE IF NOT EXISTS cashOutflowTable(
-                        primary_id TEXT UNIQUE NOT NULL,
+                        primary_id TEXT NOT NULL,
                         paymentDate TEXT NOT NULL,
                         dollarAmount MONEY NOT NULL,
                         paymentCategory TEXT NOT NULL,
@@ -39,8 +38,7 @@ class DBManager:
                         paymentType TEXT NOT NULL,
                         FOREIGN KEY (primary_id)
                             REFERENCES pidTable (primary_id)
-                            ON DELETE SET NULL
-                            ON UPDATE CASCADE          
+                            ON UPDATE CASCADE    
                         )
                         '''
 
