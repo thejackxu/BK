@@ -57,12 +57,12 @@ class DBManager:
             print('Database successfully connected!')
             self.conn.execute('PRAGMA foreign_keys = 1')
             self.createTable()
-            #return True
+            return True
 
         except sqlite3.Error as e:
             self.conn.close()
             print('Error occurred: {0}'.format(e))
-            #return False
+            return False
 
     def addProperties(self, PID, newaddress):
         query = '''
